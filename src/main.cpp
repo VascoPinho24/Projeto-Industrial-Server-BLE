@@ -1,3 +1,5 @@
+// BLE S3 SERVER
+
 #include <BLEDevice.h>
 #include <BLEUtils.h>
 #include <BLEServer.h>
@@ -72,7 +74,11 @@ void loop()
   num_float = atof( value.c_str());
   Serial.println(num_float);
 
-  brightness = map(num_float,0,4095,0,255);
-  analogWrite(LED_BUILTIN,brightness);
+  if((num_float<20)&& (num_float>0)){
+  digitalWrite(LED_BUILTIN,HIGH);  
+  }
+  else{
+  digitalWrite(LED_BUILTIN,LOW);
+  }
   delay(500);
 }
